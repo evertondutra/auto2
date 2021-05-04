@@ -1,10 +1,13 @@
 from behave import given, when, then
 from utils import Utils
 from page.header_page import HeaderPage
+from nose.tools import assert_equal
+from page.results_page import ResultsPage
 
+# Estancia
 utils = Utils()
 header_page = HeaderPage()
-
+results_page = ResultsPage()
 
 @given(u'que acesso o site do python')
 def step_impl(context):
@@ -22,5 +25,4 @@ def step_impl(context):
 
 @then(u'devo visualizar o resultado da pesquisa')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then devo visualizar o resultado da pesquisa')
-
+    assert_equal(results_page.get_text_title(), 'Search Python.org')
